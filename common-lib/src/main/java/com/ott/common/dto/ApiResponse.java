@@ -1,6 +1,9 @@
 package com.ott.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
@@ -9,13 +12,16 @@ import java.time.Instant;
  * (and the API Gateway) can rely on one consistent shape regardless of
  * which downstream service answered the call.
  */
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record ApiResponse<T>(
-        boolean success,
-        T data,
-        ApiError error,
-        Instant timestamp
-) {
+public class ApiResponse<T> {
+
+    private boolean success;
+    private T data;
+    private ApiError error;
+    private Instant timestamp;
 
     public static <T> ApiResponse<T> ok(T data) {
         return new ApiResponse<>(true, data, null, Instant.now());
