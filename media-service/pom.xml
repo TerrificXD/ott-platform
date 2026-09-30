@@ -10,10 +10,10 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>subscription-billing-service</artifactId>
+  <artifactId>media-service</artifactId>
   <packaging>jar</packaging>
-  <name>subscription-billing-service</name>
-  <description>Plans, orders, Razorpay payments and webhook-driven subscription activation</description>
+  <name>media-service</name>
+  <description>Video transcoding pipeline and streaming playback - entitlement checks, signed URLs, resume position (merges the former video-transcoding and streaming-playback services)</description>
 
   <dependencies>
     <dependency>
@@ -27,6 +27,10 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -53,12 +57,9 @@
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-redis</artifactId>
-    </dependency>
-    <!-- TODO(Phase 3): add the Razorpay Java SDK (com.razorpay:razorpay-java)
-         once you're wiring up the actual checkout/webhook flow. -->
+    <!-- TODO(Phase 4): add S3 access (e.g. software.amazon.awssdk:s3) and a
+         Cassandra/DynamoDB client for watch-history once you're building
+         the actual transcoding + playback logic. -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
