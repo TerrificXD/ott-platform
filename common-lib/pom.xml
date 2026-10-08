@@ -16,6 +16,11 @@
   <description>Shared DTOs, exceptions, and utilities used across OTT platform microservices</description>
 
   <dependencies>
+    <!-- org.springframework.http.HttpStatus, used by OttException -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
     <!-- validation annotations used on shared DTOs -->
     <dependency>
       <groupId>jakarta.validation</groupId>
